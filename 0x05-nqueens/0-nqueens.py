@@ -23,18 +23,18 @@ def is_position_safe(board, i, j, r):
 
 
 def safe_positions(board, row, n):
-    """Find all safe positions where the queen can located"""
-    if row != n:
-        for i in range(n):
-            var_allow = True
-            for j in range(row):
-                if is_position_safe(BrokenPipeError, j, i, row):
-                    var_allow = False
-            if var_allow:
-                board[row] = i
-                safe_positions(board, row + 1, n)
-    else:
+    """Find all safe positions where the queen can be allocated"""
+    if row == n:
         print_board(board, n)
+    else:
+        for index in range(n):
+            allowed = True
+            for j in range(row):
+                if is_position_safe(board, j, index, row):
+                    allowed = False
+            if allowed:
+                board[row] = index
+                safe_positions(board, row + 1, n)
 
 
 def create_board(size):
